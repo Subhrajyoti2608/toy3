@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+        <title>Toy Shop</title>
+
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
+
+  <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+  <script src="https://raw.githack.com/fcor/arjs-gestures/master/dist/gestures.js"></script>
+
+        <script src="./js/key.js"></script>
+        
+        <script src="./js/eventListener.js"></script>
+        <script src="./js/addMarkers.js"></script>
+
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+
+    <link rel="stylesheet" type="text/css" src="style.css"/>
+
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+
+  <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-analytics.js"></script>
+
+  <script>
+const firebaseConfig = {
+  apiKey: "AIzaSyDXovrTtuq_Hwp7PkQMU9GQKkrgXOTp1js",
+  authDomain: "toyar-78622.firebaseapp.com",
+  projectId: "toyar-78622",
+  storageBucket: "toyar-78622.appspot.com",
+  messagingSenderId: "119728288048",
+  appId: "1:119728288048:web:f1394f1ca4a069954058f5"
+};
+
+firebase.initializeApp(firebaseConfig);
+firebase.analytics()
+
+  </script>
+    </head>
+
+    <body style="margin : 0px; overflow: hidden;">
+
+        <a-scene embedded vr-mode-ui="enabled : false"
+        arjs="sourceType:webcam; sourceWeidth:1280; soureHeight:960; displayWidth:1280; displayHeight:960; debugUIEnabled:flalse"
+        gesture-detector buttonKey create-markers
+        >
+
+
+    </a-scene>
+
+    <div id="button-div"></div>
+
+
+    <div class="container">
+      <div id="modal-div" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Order Summary</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="closeModal()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="table-responsive">
+                <table class="table table-condensed">
+                  <thead>
+                    <tr>
+                      <td><strong>Item</strong></td>
+                      <td class="text-center"><strong>Price</strong></td>
+                      <td class="text-center"><strong>Quantity</strong></td>
+                      <td class="text-right"><strong>Total</strong></td>
+                    </tr>
+                  </thead>
+                  <tbody id="bill-table-body">
+                    <!-- foreach ($order->lineItems as $line)  -->
+  
+                    <!-- Your Order Summary UI will comes here                 
+                      
+                    -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button id="pay-button" type="button" class="btn btn-primary">
+                Pay Now
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function closeModal() {
+        document.getElementById("modal-div").style.display = "none";
+      }
+    </script>
+    </body>
+</html>
